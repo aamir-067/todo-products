@@ -5,7 +5,11 @@ export interface Todo {
 	completed: boolean;
 }
 
-const initialState: { allTodo: Array<Todo> } = {
+export interface TodoInitialStatus {
+	allTodo: Array<Todo>;
+}
+
+const initialState: TodoInitialStatus = {
 	allTodo: [
 		{
 			text: "dummy todo 01",
@@ -22,14 +26,17 @@ const todoReducer = createSlice({
 	name: "todoReducer",
 	initialState,
 	reducers: {
-		addTodo: (state, action) => {
+		addTodo: (state: TodoInitialStatus, action) => {
 			state.allTodo.push(action.payload.todo);
 		},
-		changeTodoStatus: (state, action) => {
+		changeTodoStatus: (state: TodoInitialStatus, action) => {
 			state.allTodo[action.payload.index].completed =
 				!state.allTodo[action.payload.index].completed;
 		},
+		deleteTodo: (state: TodoInitialStatus, action) => {
+			state.allTodo = state.allTodo.splice(action.payload.index, 1);
+		},
 	},
 });
-export const { addTodo, changeTodoStatus } = todoReducer.actions;
+export const { addTodo, changeTodoStatus, deleteTodo } = todoReducer.actions;
 export default todoReducer.reducer;
