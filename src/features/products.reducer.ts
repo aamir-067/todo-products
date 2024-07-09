@@ -10,16 +10,7 @@ export interface ProductInitialStatus {
 }
 
 const initialState: ProductInitialStatus = {
-	allProducts: [
-		// {
-		// 	title: "dummy todo 01",
-		// 	quantity: 2,
-		// },
-		// {
-		// 	title: "dummy todo 02",
-		// 	quantity: 3,
-		// },
-	],
+	allProducts: [],
 };
 
 const productsReducer = createSlice({

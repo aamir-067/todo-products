@@ -10,16 +10,7 @@ export interface TodoInitialStatus {
 }
 
 const initialState: TodoInitialStatus = {
-	allTodo: [
-		{
-			text: "dummy todo 01",
-			completed: false,
-		},
-		{
-			text: "dummy todo 02",
-			completed: true,
-		},
-	],
+	allTodo: [],
 };
 
 const todoReducer = createSlice({

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { addTodo, changeTodoStatus, Todo } from '../features/todos.reducer';
 import { store, Store } from '../store/store';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const Todos = () => {
 
@@ -41,7 +41,7 @@ const Todos = () => {
     };
 
 
-    const toggleTodoComplete = (index) => {
+    const toggleTodoComplete = (index: number) => {
         store.dispatch(changeTodoStatus({ index }))
     }
 
