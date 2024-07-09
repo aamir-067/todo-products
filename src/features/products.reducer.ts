@@ -11,14 +11,14 @@ export interface ProductInitialStatus {
 
 const initialState: ProductInitialStatus = {
 	allProducts: [
-		{
-			title: "dummy todo 01",
-			quantity: 2,
-		},
-		{
-			title: "dummy todo 02",
-			quantity: 3,
-		},
+		// {
+		// 	title: "dummy todo 01",
+		// 	quantity: 2,
+		// },
+		// {
+		// 	title: "dummy todo 02",
+		// 	quantity: 3,
+		// },
 	],
 };
 
@@ -29,11 +29,22 @@ const productsReducer = createSlice({
 		addProduct: (state: ProductInitialStatus, action) => {
 			state.allProducts.push(action.payload.product);
 		},
+
+		// increment the quantity of the product by one.
 		incrementQuantity: (state: ProductInitialStatus, action) => {
 			state.allProducts[action.payload.index].quantity += 1;
 		},
+
+		/* The `decrementQuantity` function in the productsReducer slice is responsible for reducing the
+		quantity of a specific product. and removes it if the quantity becomes zero */
 		decrementQuantity: (state: ProductInitialStatus, action) => {
-			state.allProducts[action.payload.index].quantity -= 1;
+			const newQuantity: number =
+				state.allProducts[action.payload.index].quantity - 1;
+			if (newQuantity > 0) {
+				state.allProducts[action.payload.index].quantity = newQuantity;
+			} else {
+				state.allProducts.splice(action.payload.index, 1);
+			}
 		},
 	},
 });

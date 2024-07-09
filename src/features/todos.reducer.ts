@@ -33,10 +33,7 @@ const todoReducer = createSlice({
 			state.allTodo[action.payload.index].completed =
 				!state.allTodo[action.payload.index].completed;
 		},
-		deleteTodo: (state: TodoInitialStatus, action) => {
-			state.allTodo = state.allTodo.splice(action.payload.index, 1);
-		},
 	},
 });
-export const { addTodo, changeTodoStatus, deleteTodo } = todoReducer.actions;
+export const { addTodo, changeTodoStatus } = todoReducer.actions;
 export default todoReducer.reducer;

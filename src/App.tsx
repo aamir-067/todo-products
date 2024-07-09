@@ -4,7 +4,7 @@ import NavBar from './components/NavBar'
 function App() {
 
   return (
-    <div className='min-h-screen px-4 bg-gray-900'>
+    <div className='min-h-screen px-4'>
       <NavBar />
       <Outlet />
     </div>
