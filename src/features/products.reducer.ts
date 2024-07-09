@@ -18,7 +18,7 @@ const productsReducer = createSlice({
 	initialState,
 	reducers: {
 		addProduct: (state: ProductInitialStatus, action) => {
-			state.allProducts.push(action.payload.product);
+			state.allProducts.unshift(action.payload.product);
 		},
 
 		// increment the quantity of the product by one.

@@ -21,7 +21,8 @@ const Todos = () => {
 
 
 
-    const registerTodo = () => {
+    const registerTodo = (e: React.FormEvent<HTMLFormElement> | undefined = undefined) => {
+        e?.preventDefault();
         if (todoText && todoText.trim()) {
 
             const newTodo: Todo = {
@@ -55,10 +56,12 @@ const Todos = () => {
 
 
                 {/* input field */}
-                <div className='h-16 flex rounded-lg border-gray-200 border-2 mt-4 overflow-hidden'>
+                {/* <div className='h-16 flex rounded-lg border-gray-200 border-2 mt-4 overflow-hidden'> */}
+                <form className='h-16 flex rounded-lg border-gray-200 border-2 mt-4 overflow-hidden' onSubmit={(e) => registerTodo(e)}>
                     <input value={todoText} onChange={(e) => setTodoText(e.target.value)} type="text" placeholder='Add a todo' className='h-full px-2 text-sm text-[$575757] bg-transparent outline-none w-9/12' />
-                    <button onClick={registerTodo} className='bg-transparent font-semibold text-xl w-3/12'>Add</button>
-                </div>
+                    <button onClick={() => registerTodo(undefined)} className='bg-transparent font-semibold text-xl w-3/12'>Add</button>
+                </form>
+                {/* </div> */}
 
                 {/* incomplete todo */}
                 <div className='mb-10 mt-16'>

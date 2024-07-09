@@ -18,7 +18,7 @@ const todoReducer = createSlice({
 	initialState,
 	reducers: {
 		addTodo: (state: TodoInitialStatus, action) => {
-			state.allTodo.push(action.payload.todo);
+			state.allTodo.unshift(action.payload.todo);
 		},
 		changeTodoStatus: (state: TodoInitialStatus, action) => {
 			state.allTodo[action.payload.index].completed =

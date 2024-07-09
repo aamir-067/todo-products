@@ -8,7 +8,8 @@ const Products = () => {
     const [productText, setProductText] = useState("");
 
 
-    const registerNewProduct = () => {
+    const registerNewProduct = (e: React.FormEvent<HTMLFormElement> | undefined = undefined) => {
+        e?.preventDefault();
         if (productText && productText.trim()) {
 
             const newProduct: Product = {
@@ -35,7 +36,7 @@ const Products = () => {
             {/* input field */}
             <div className="mt-8">
                 <label htmlFor="productText" className="block text-sm font-normal text-[#676565]">Product</label>
-                <div className="flex">
+                <form onSubmit={(e) => registerNewProduct(e)} className="flex">
                     <input
                         type="text"
                         id="productText"
@@ -44,8 +45,8 @@ const Products = () => {
                         placeholder="e.g. Product ABC"
                         className="mt-1 w-full p-2 mr-3 rounded-md border-[#676565] border-[1px] outline-none placeholder:text-[#676565]"
                     />
-                    <button onClick={registerNewProduct} className={`${productText.trim().length ? "bg-[#1061C4] text-white" : "bg-[#F4F4F4] text-[#676565]"} font-medium px-4 text-sm rounded-md`}>Add</button>
-                </div>
+                    <button onClick={() => registerNewProduct(undefined)} className={`${productText.trim().length ? "bg-[#1061C4] text-white" : "bg-[#F4F4F4] text-[#676565]"} font-medium px-4 text-sm rounded-md`}>Add</button>
+                </form>
             </div>
 
 
